@@ -1,0 +1,62 @@
+body {
+	color: rebeccapurple;
+}
+
+.choiceContainer {
+	display: flex;
+	margin-bottom: 0.8rem;
+	width: 100%;
+	border-radius: 4px;
+	background-color: salmon;
+	font-size: 3rem;
+	min-width: 80rem;
+}
+
+.choiceContainer:hover {
+	cursor: pointer;
+	box-shadow: 0 0.4rem 1.4rem lavender;
+	transform: scale(1.02);
+	transition: transform 100ms;
+}
+
+.choicePrefix {
+	padding: 2rem 2.5rem;
+	color: lavender;
+}
+
+.choiceText {
+	padding: 2rem;
+	width: 100%;
+}
+
+.correct {
+	background-color: limegreen;
+}
+
+.incorrect {
+	background-color: red;
+}
+
+#hud {
+	display: flex;
+	justify-content: space-between;
+}
+
+.hudPrefix {
+	text-align: center;
+	font-size: 2rem;
+}
+
+.hudMainText {
+	text-align: center;
+}
+
+#timer {
+	color: rebeccapurple;
+}
+
+@media screen and (max-width: 768px) {
+	.choice-container {
+		min-width: 40rem;
+	}
+}
