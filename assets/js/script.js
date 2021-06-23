@@ -8,9 +8,9 @@ let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
-let timer = 60
+let timeLeft = 60
 
-let questions = [
+var questions = [
 	{
 		question: "What does HTML stand for?",
 		answer: 1,
@@ -68,24 +68,24 @@ var getNewQuestion = function () {
 		return window.location.assign("/end.html")
 	}
 	questionCounter++;
-	timerText.innerText = timeLeft " seconds remaining"
+	timerText.innerText = timeLeft + " seconds remaining"
 
-	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+	const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionsIndex];
-	question.innerText = currentQuestion.question;
+	question.innerHTML = currentQuestion.question;
 
 	choices.forEach(choice => {
-		const number = choice.dataset["number"[];
+		const number = choice.dataset["number"];
 		choice.innerText = currentQuestion["choice" + number];
 	})
 
-	availableQuestions.splice(questionIndex, 1);
+	availableQuestions.splice(questionsIndex, 1);
 
 	acceptingAnswers = true;
 }
 
-var choices.forEach(choice => {
-	choice.on("click", e => {
+choices.forEach(choice => {
+	choice.addEventListener("click", e => {
 		if(!acceptingAnswers) return;
 	acceptingAnswers = false
 	const selectedChoice = e.target;
@@ -105,3 +105,10 @@ var choices.forEach(choice => {
 	}, 1000);
 	})
 })
+
+incrementScore = num => {
+	score += num;
+	scoreText.innerText = timeLeft;
+}
+
+startGame();
