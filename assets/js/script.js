@@ -1,5 +1,7 @@
 var question = $("#question");
-var choices = Array.from(document.querySelectorAll(".choiceText"));
+console.log(question)
+var choices = document.querySelectorAll(".choiceText");
+console.log(choices)
 var timerText = $("#timer");
 var scoreText = $("#score");
  
@@ -61,9 +63,6 @@ var startGame = function() {
 	getNewQuestion()
 }
 
-
-
-
 var getNewQuestion = function () {
 	if(availableQuestions.length = 0 || questionCounter > MAX_QUESTIONS) {
 		localStorage.setItem("mostRecentScore", score)
@@ -75,11 +74,12 @@ var getNewQuestion = function () {
 		availableQuestions.push(questions[i].question)
 	};
 	console.log(availableQuestions);
-	question.textContent = availableQuestions[0].question;
-
+	for (i=0; i<questions.length; i++) {
+	question[i].textContent = availableQuestions[i];
+	};
 	choices.forEach(choice => {
-		const number = choice.dataset["number"];
-		choice.textContent = availableQuestions["choiceText" + number];
+		var number = choice.dataset.number;
+		choice.textContent = questions[0].choice1
 	})
 
 	availableQuestions.splice(questions, 1);
