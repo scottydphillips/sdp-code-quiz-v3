@@ -1,7 +1,7 @@
-let question = $("#question");
-const choices = Array.from(document.querySelectorAll(".choiceText"));
-const timerText = $("#timer");
-const scoreText = $("#score");
+var question = $("#question");
+var choices = Array.from(document.querySelectorAll(".choiceText"));
+var timerText = $("#timer");
+var scoreText = $("#score");
  
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -58,9 +58,11 @@ const MAX_QUESTIONS = 5;
 var startGame = function() {
 	questionCounter = 0;
 	score = 0;
-	availableQuestions = [...questions]
 	getNewQuestion()
 }
+
+
+
 
 var getNewQuestion = function () {
 	if(availableQuestions.length = 0 || questionCounter > MAX_QUESTIONS) {
@@ -69,17 +71,18 @@ var getNewQuestion = function () {
 	}
 	questionCounter++;
 	timerText.innerText = timeLeft + " seconds remaining"
-
-	const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
-	currentQuestion = availableQuestions[questionsIndex];
-	question.innerText = currentQuestion.question;
+	for (i=0; i < questions.length; i++) {
+		availableQuestions.push(questions[i].question)
+	};
+	console.log(availableQuestions);
+	question.textContent = availableQuestions[0].question;
 
 	choices.forEach(choice => {
 		const number = choice.dataset["number"];
-		choice.innerText = currentQuestion["choice" + number];
+		choice.textContent = availableQuestions["choiceText" + number];
 	})
 
-	availableQuestions.splice(questionsIndex, 1);
+	availableQuestions.splice(questions, 1);
 
 	acceptingAnswers = true;
 }
@@ -110,5 +113,14 @@ incrementScore = num => {
 	score += num;
 	scoreText.innerText = timeLeft;
 }
+
+var timeInterval = setInterval(function () {
+	timeLeft--;
+	if(timeLeft > 1) {
+		timerText.textContent = timeLeft + " seconds remaining";
+	} else {
+
+	};
+}, 1000);
 
 startGame();
