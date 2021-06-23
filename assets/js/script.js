@@ -1,4 +1,4 @@
-const question = $("#question");
+let question = $("#question");
 const choices = Array.from(document.querySelectorAll(".choiceText"));
 const timerText = $("#timer");
 const scoreText = $("#score");
@@ -72,7 +72,7 @@ var getNewQuestion = function () {
 
 	const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
 	currentQuestion = availableQuestions[questionsIndex];
-	question.innerHTML = currentQuestion.question;
+	question.innerText = currentQuestion.question;
 
 	choices.forEach(choice => {
 		const number = choice.dataset["number"];
