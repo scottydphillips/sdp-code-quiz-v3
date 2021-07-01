@@ -10,7 +10,6 @@ body {
 	color: white;
 	background-color: salmon;
 	font-size: 3rem;
-	min-width: 80rem;
 }
 
 .choiceContainer:hover {
