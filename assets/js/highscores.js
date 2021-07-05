@@ -1,5 +1,5 @@
-const highScoresList = $("#highScoresList")
-const highScores = JSON.parse(localStorage.getItem("highScores")) || []
+var highScoresList = $("#highScoresList")
+var highScores = JSON.parse(localStorage.getItem("highScores")) || []
 
 highScoresList.innerHTML =
 highScores.map(score => {
