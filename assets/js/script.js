@@ -105,13 +105,17 @@ choice.on("click", function (event) {
   }
   };  
   choiceSelector();
-});
-
-incrementScore = function() {
+  incrementScore = function() {
   if(questionCounter === MAX_QUESTIONS) {
   scoreText.text(timeLeft);
-  }
-};
+  localStorage.setItem("mostRecentScore", JSON.stringify(timeLeft));
+  window.location.replace('end.html')
+    }
+  };
+  incrementScore();
+});
+
+
 
 var timeInterval = setInterval(function () {
   timeLeft--;

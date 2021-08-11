@@ -15,7 +15,7 @@ username.on("keydown", () => {
 
 saveHighScore = event => {
 	event.preventDefault()
-
+	localStorage.getItem("mostRecentScore")
 	var score = {
 		score: mostRecentScore,
 		name: username.value
