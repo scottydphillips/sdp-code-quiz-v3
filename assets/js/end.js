@@ -1,4 +1,4 @@
-var username = $("#username")
+var usernameEl = $("#username")
 var saveScoreBtn = $("#saveScoreBtn")
 var finalScore = $("#finalScore")
 var mostRecentScore = localStorage.getItem("mostRecentScore")
@@ -9,11 +9,13 @@ var MAX_HIGH_SCORES = 5;
 
 finalScore.innerText = mostRecentScore;
 
-username.on("keydown", () => {
+usernameEl.on("click", () => {
+	var username = usernameEl.value.trim()
 	saveScoreBtn.disabled = !username.value
 })
 
 saveHighScore = event => {
+	var username = username.value.trim()
 	event.preventDefault()
 	localStorage.getItem("mostRecentScore")
 	var score = {
